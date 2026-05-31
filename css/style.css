@@ -1,0 +1,151 @@
+body {
+    background-color: #F8FAFC;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1,h2,h3,h4,p{
+    margin: 0;
+
+}
+.navbar{
+    background-color: #ffffff;
+}
+.icon-text h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.icon-text h2 span{
+    color: rgb(9, 95, 249);
+}
+.icon-text p{
+    font-size: 0.8rem;
+}
+.collapse .icons{
+    display: flex;
+    gap: 10px;
+       flex-direction: row;
+       margin-left: 20px;
+}
+.collapse .icons i{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+.collapse .icons i:hover{
+    background-color: #F3F4F6;
+}
+
+.main{
+    padding: 30px;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+
+.box i{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+
+.total-box i{
+    background-color: #DBEAFE;
+    color: #2563EB;
+}
+
+
+.favorite-box i{
+    background-color: #FEF3C7;
+    color: #F59E0B;
+}
+
+
+.emergency-box i{
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+
+
+.search-box{
+    position: relative;
+    width: 75%;
+}
+
+.search-box i{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+.search-box input{
+    padding-left: 45px;
+}
+
+.form-control::placeholder{
+    font-size: 14px;
+    color: #6c757d;
+}
+.form-control:focus,
+.form-select:focus{
+    border-color: #7728FC;
+    box-shadow: none;
+}
+.form-select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: none !important;
+}
+#notesInput{
+    resize: none;
+}
+
+
+button.close{
+    background-color: #F3F4F6;
+    color: #374151;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+button.close:hover{
+    background-color: #E5E7EB;
+}
+
+button.save{
+    background-color:#7928FD ;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.save:hover{
+    background-color: #6619ea;
+    color: white;
+}
+
+
+

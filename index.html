@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactHub </title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg bg-body-white">
+  <div class="container">
+    <a class="navbar-brand d-flex justify-content-center align-items-center gap-2" href="#">
+        <i class="fa-solid fa-address-book fa-2xl" style="color: rgb(9, 95, 249);"></i>
+       <div class="icon-text">
+         <h2>Contact<span>Hub</span> </h2>
+         <p> Smart Contact Manager</p>
+       
+       </div>
+        
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary  ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ + Add Contact
+
+</button>
+
+<div class="icons">
+    <i class="fa-solid fa-bell"></i>
+    <i class="fa-solid fa-gear"></i>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Contact</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+     <div class="modal-body">
+
+   <div class="text-center mb-4">
+        <i class="fa-solid fa-user fa-6x text-secondary"></i>
+
+        <button class="btn btn-outline-primary d-block mx-auto mt-3">
+            <i class="fa-solid fa-camera"></i>
+            Change Photo
+        </button>
+    </div>
+
+     <div class="contact-form">
+        <label for="fullNameInput">Full Name <span>*</span></label>
+        <input type="text" class="form-control mb-3" id="fullName" placeholder="Enter full name" >
+        
+        <label for="phoneNumberInput">Phone Number <span>*</span></label>
+        <input type="tel" class="form-control mb-3" id="phoneNumber" placeholder="e,g. +1 234 567 8900" >
+
+        <label for="emailAdressInput">Email Address</label>
+        <input type="email" class="form-control mb-3" id="emailAdressInput" placeholder=" name@example.com" >
+        
+        <label for="groupInput">Group</label>
+        <select class="form-select" id="groupInput" aria-label="Default select example">
+  <option selected>select group</option>
+  <option value="family">family</option>
+  <option value="frinds">frinds</option>
+  <option value="work">work</option> 
+  <option value="scoole">scoole</option> 
+  <option value="other">other</option> 
+</select>
+
+<label for="notesInput">Notes</label>
+<textarea
+    class="form-control mb-3"
+    id="notesInput"
+    rows="4"
+    placeholder="Add  notes about this contact"
+></textarea>
+
+<div class="d-flex gap-4 mb-3">
+<div class="form-check ">
+    <input class="form-check-input" type="checkbox" id="favoriteInput">
+    <label class="form-check-label" for="favoriteInput">
+        <i class="fa-regular fa-star text-warning me-1"></i>
+        Favorite
+    </label>
+</div>
+
+<div class="form-check ">
+    <input class="form-check-input" type="checkbox" id="emergencyInput">
+    <label class="form-check-label" for="emergencyInput">
+        <i class="fa-solid fa-heart-crack text-danger me-1"></i>
+        Emergency 
+    </label>
+</div>
+</div>
+
+    </div>
+
+</div>
+     <div class="modal-footer d-flex gap-2">
+    <button type="button" class="btn  close  flex-grow-1">
+        Close
+    </button>
+
+    <button type="button" class="btn save flex-grow-1">
+     <i class="fa-solid fa-check"></i>   Save content
+    </button>
+</div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</nav>
+
+<section class="main">
+    <div class="container">
+       <div class="row g-4">
+    <div class="col-md-4">
+        <div class="box total-box">
+            <i class="fa-solid fa-users"></i>
+            <div class="icons-details">
+                <p>Total</p>
+                <h3>0</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="box favorite-box">
+            <i class="fa-regular fa-star"></i>
+            <div class="icons-details">
+                <p>Favorites</p>
+                <h3>0</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="box emergency-box">
+            <i class="fa-solid fa-heart-crack"></i>
+            <div class="icons-details">
+                <p>Emergency</p>
+                <h3>0</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="search pt-4">
+    <h1>All Contacts</h1>
+<p>Manage and organize your 0 contacts</p>
+</div>
+<div class="search-box mt-3">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input
+        type="text"
+        class="form-control form-control-lg"
+        placeholder="Search by name or email"
+    >
+</div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
