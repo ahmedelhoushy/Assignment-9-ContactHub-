@@ -27,7 +27,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       
       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary  ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button"  onclick="resetModal()" class="btn btn-primary  ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
  + Add Contact
 
 </button>
@@ -47,24 +47,33 @@
       </div>
      <div class="modal-body">
 
-   <div class="text-center mb-4">
-        <i class="fa-solid fa-user fa-6x text-secondary"></i>
+   <div class="photo-upload text-center mb-4">
 
-        <button class="btn btn-outline-primary d-block mx-auto mt-3">
-            <i class="fa-solid fa-camera"></i>
-            Change Photo
-        </button>
-    </div>
+    <img src="img/download.png"
+         alt="Contact Photo"
+         class="rounded-circle">
+
+    <input type="file" id="photoInput" accept="image/*">
+
+    <label for="photoInput" class="upload-btn">
+        <i class="fa-solid fa-camera"></i>
+        Change Photo
+    </label>
+
+</div>
 
      <div class="contact-form">
         <label for="fullNameInput">Full Name <span>*</span></label>
-        <input type="text" class="form-control mb-3" id="fullName" placeholder="Enter full name" >
+        <input type="text" class="form-control mb-3" id="fullNameInput" placeholder="Enter full name" >
         
         <label for="phoneNumberInput">Phone Number <span>*</span></label>
-        <input type="tel" class="form-control mb-3" id="phoneNumber" placeholder="e,g. +1 234 567 8900" >
+        <input type="tel" class="form-control mb-3" id="phoneNumberInput" placeholder="e,g. +1 234 567 8900" >
 
         <label for="emailAdressInput">Email Address</label>
         <input type="email" class="form-control mb-3" id="emailAdressInput" placeholder=" name@example.com" >
+
+         <label for="locationAdressInput"> Address</label>
+        <input type="email" class="form-control mb-3" id="locationAdressInput" placeholder=" Enter Adress" >
         
         <label for="groupInput">Group</label>
         <select class="form-select" id="groupInput" aria-label="Default select example">
@@ -106,12 +115,15 @@
 
 </div>
      <div class="modal-footer d-flex gap-2">
-    <button type="button" class="btn  close  flex-grow-1">
+    <button type="button" onclick="closeModal()" class="btn  close  flex-grow-1 "  data-bs-dismiss="modal" >
         Close
     </button>
 
-    <button type="button" class="btn save flex-grow-1">
+    <button type="button" id="addBtn" onclick="addContent()" class="btn save flex-grow-1 d-block">
      <i class="fa-solid fa-check"></i>   Save content
+    </button>
+    <button type="button" id="updateBtn" onclick="updateContent()"  class="btn save flex-grow-1 d-none">
+     <i class="fa-solid fa-check "></i>   Update content
     </button>
 </div>
     </div>
@@ -129,7 +141,7 @@
             <i class="fa-solid fa-users"></i>
             <div class="icons-details">
                 <p>Total</p>
-                <h3>0</h3>
+                <h3 id="totalContacts">0</h3>
             </div>
         </div>
     </div>
@@ -139,7 +151,7 @@
             <i class="fa-regular fa-star"></i>
             <div class="icons-details">
                 <p>Favorites</p>
-                <h3>0</h3>
+                <h3 id="favoriteContacts">0</h3>
             </div>
         </div>
     </div>
@@ -149,7 +161,7 @@
             <i class="fa-solid fa-heart-crack"></i>
             <div class="icons-details">
                 <p>Emergency</p>
-                <h3>0</h3>
+                <h3 id="emergencyContacts">0</h3>
             </div>
         </div>
     </div>
@@ -159,14 +171,54 @@
     <h1>All Contacts</h1>
 <p>Manage and organize your 0 contacts</p>
 </div>
-<div class="search-box mt-3">
+<div class="search-box mt-3 mx-auto"> 
     <i class="fa-solid fa-magnifying-glass"></i>
     <input
+           oninput="searchByNameContent()"
+           id="searchInput"
         type="text"
-        class="form-control form-control-lg"
+        class="form-control form-control-lg mb-4"
         placeholder="Search by name or email"
     >
 </div>
+
+<div class="added-content">
+    <div class="container">
+        <div class="row g-4 " id="contentContainer">
+            <!-- <div class="col-md-4  ">
+                <div class="content">
+ <div class="content-header">
+                    <div class="logo">
+                    A
+                    </div>
+                    <div class="naming">
+                        <h3>ahmed</h3>
+                        <p><i class="fa-solid fa-phone fa-2xs"></i> 01092082872</p>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <p><i class="fa-solid fa-envelope fa-2xs"></i> ahmed@Amaged.com</p>
+                    <p> <i class="fa-solid fa-location-dot fa-2xs"></i> via ahdhfkdksk 50 </p>
+                    <span> group-select</span>
+                    <p>notes</p>
+                </div>
+                <div class="content-footer">
+                    <div class="right-icons">
+                        <i class="fa-solid fa-phone fa-2xs"></i>
+                        <i class="fa-solid fa-envelope fa-2xs"></i>
+                    </div>
+                    <div class="left-icons">
+                        <button> <i class="fa-solid fa-pen fa-2xs"></i></button>
+                        <button> <i class="fa-solid fa-trash fa-2xs"></i></button>
+                    </div>
+                </div>
+                </div>
+               
+            </div> -->
+        </div>
+    </div>
+</div>
+
 
         </div>
     </div>
