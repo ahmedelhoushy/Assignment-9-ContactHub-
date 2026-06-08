@@ -17,6 +17,11 @@ var updatedIndex= 0 ;
 var totalContacts = document.getElementById('totalContacts');
 var favoriteContacts = document.getElementById('favoriteContacts');
 var emergencyContacts = document.getElementById('emergencyContacts');
+var alertName = document.querySelector('.alertName');
+var alertPhone = document.querySelector('.alertPhone');
+var alertEmail = document.querySelector('.alertEmail');
+var alertForm = document.querySelector('.alertForm');
+var inputList = document.querySelectorAll('.contact-form input');
 var contentList = [];
 
 if(localStorage.getItem('contentList') != null){
@@ -28,8 +33,14 @@ updateStatistics();
 
 function addContent(){
 
+if (validateContent(fullNameInput)
+&& validateContent(phoneNumberInput)
+&& validateContent(emailAdressInput)
+ && validateContent(locationAdressInput)
+){
     // 1-Get the input values
     //2- group of input values
+
     var content = {
         fullName: fullNameInput.value,
         phoneNumber: phoneNumberInput.value,
@@ -51,9 +62,24 @@ function addContent(){
     // 5- display the content in the content box
     updateStatistics();
 displayLastContent(content);
+
+
+// check formAlert
+if(alertForm.classList.contains('d-block')){
+    alertForm.classList.replace('d-block', 'd-none');
+}
+// removw is valid
+for(var i=0; i<inputList.length; i++){
+    inputList[i].classList.remove('is-valid');
+}
+
 // 6- clear the input values
 clearform()
 
+
+} else {
+    alertForm.classList.replace('d-none', 'd-block');
+}
 }
 function clearform(){
 fullNameInput.value = '';
@@ -208,7 +234,10 @@ function updateContent(index){
 // contentList[updatedIndex].photo = photoInput.value;
 // contentList[updatedIndex].favorite = favoriteInput.checked;
 // contentList[updatedIndex].emergency = emergencyInput.checked;
-
+if (validateContent(fullNameInput)&& validateContent(phoneNumberInput)
+&& validateContent(emailAdressInput)
+ && validateContent(locationAdressInput)
+){
 var content = {
         fullName: fullNameInput.value,
         phoneNumber: phoneNumberInput.value,
@@ -230,6 +259,14 @@ var content = {
     addBtn.classList.replace(  'd-none','d-block' );
 
     displayAllContents(contentList);
+    // check formAlert
+if(alertForm.classList.contains('d-block')){
+    alertForm.classList.replace('d-block', 'd-none');
+}
+// removw is valid
+for(var i=0; i<inputList.length; i++){
+    inputList[i].classList.remove('is-valid');
+}
 updateStatistics();
  clearform()
 
@@ -237,6 +274,8 @@ updateStatistics();
     var modal = bootstrap.Modal.getInstance(modalElement);
 
     modal.hide();
+} else{
+    alertForm.classList.replace('d-none', 'd-block');
 }
 
 function resetModal(){
@@ -275,3 +314,101 @@ function updateStatistics() {
     favoriteContacts.innerHTML = favoriteCount;
     emergencyContacts.innerHTML = emergencyCount;
 }
+
+// validation functions
+
+
+
+
+function validateContent(element ) {
+   
+var regex={
+    fullNameInput: /^[a-zA-Z ]{6,30}$/,
+    phoneNumberInput: /^(010|011|012|015)[0-9]{8}$/,
+    emailAdressInput: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    locationAdressInput: /^[a-zA-Z ]{10,30}$/,
+}
+var alerts = {
+    fullNameInput: document.querySelector('.alertName'),
+    phoneNumberInput: document.querySelector('.alertPhone'),
+    emailAdressInput: document.querySelector('.alertEmail'),
+    locationAdressInput: document.querySelector('.alertAdress')
+};
+ var alertElement = alerts[element.id];
+
+var elementId = element.id;
+    if (!regex[element.id].test(element.value)) {
+
+        element.classList.add('is-invalid');
+        element.classList.remove('is-valid');
+        alertElement.classList.replace('d-none', 'd-block');
+        return false;
+
+    } else {
+
+        element.classList.add('is-valid');
+        element.classList.remove('is-invalid');
+        if(alertElement.classList.contains('d-block')){
+            alertElement.classList.replace('d-block', 'd-none');
+        }
+
+        return true;
+    }
+}
+for(var i=0; i<inputList.length; i++){
+    inputList[i].addEventListener('blur',function(){
+        validateContent(this)
+    })
+}
+
+//     fullNameInput.addEventListener('blur',function(){
+// validateContent( fullNameInput , /^[a-zA-Z ]{6,30}$/ , alertName)
+//     });
+//      phoneNumberInput.addEventListener('blur',function(){
+// validateContent( phoneNumberInput , /^(010|011|012|015)[0-9]{8}$/ , alertPhone)
+//     });
+//       emailAdressInput.addEventListener('blur',function(){
+// validateContent( emailAdressInput , /^[^\s@]+@[^\s@]+\.[^\s@]+$/ , alertEmail)
+//     });
+
+// function validatePhone() {
+//     var regexPhone = /^(010|011|012|015)[0-9]{8}$/;
+
+//     if (!regexPhone.test(phoneNumberInput.value)) {
+//         phoneNumberInput.classList.add('is-invalid');
+//         phoneNumberInput.classList.remove('is-valid');
+//         alertPhone.classList.replace('d-none', 'd-block');
+//         return false;
+//     } else {
+//         phoneNumberInput.classList.add('is-valid');
+//         phoneNumberInput.classList.remove('is-invalid');
+//          if(alertPhone.classList.contains('d-block')){
+//             alertPhone.classList.replace('d-block', 'd-none');
+//         }
+//         return true;
+        
+//     }}
+
+//   phoneNumberInput.addEventListener('blur',function(){
+// validatePhone()
+//     });
+
+
+// function validateEmail() {
+//     if (!regexEmail.test(emailAdressInput.value)) {
+//         emailAdressInput.classList.add('is-invalid');
+//         emailAdressInput.classList.remove('is-valid');
+//         alertEmail.classList.replace('d-none', 'd-block');
+//         return false;
+//     } else {
+//         emailAdressInput.classList.add('is-valid');
+//         emailAdressInput.classList.remove('is-invalid');
+//          if(alertEmail.classList.contains('d-block')){
+//             alertEmail.classList.replace('d-block', 'd-none');
+//         }
+//         return true;
+//     }   }
+
+//       emailAdressInput.addEventListener('blur',function(){
+// validateEmail()
+//     });

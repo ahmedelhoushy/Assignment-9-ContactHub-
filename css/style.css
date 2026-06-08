@@ -319,3 +319,11 @@ button.save{
     background-color: #EF4444;
     color: white;
 }
+
+
+.alertName,
+.alertPhone,
+.alertEmail,
+.alertAdress{
+  margin-top: -15px;
+}

@@ -63,18 +63,24 @@
 </div>
 
      <div class="contact-form">
+        <p class=" alert alertForm text-danger alert-danger  mb-0 d-none">form is not valid </p>
+
         <label for="fullNameInput">Full Name <span>*</span></label>
         <input type="text" class="form-control mb-3" id="fullNameInput" placeholder="Enter full name" >
+        <p class=" alertName text-danger  mb-0 d-none">fullName min legnth is 6 max is 30 </p>
         
         <label for="phoneNumberInput">Phone Number <span>*</span></label>
         <input type="tel" class="form-control mb-3" id="phoneNumberInput" placeholder="e,g. +1 234 567 8900" >
+                <p class=" alertPhone text-danger  mb-0 d-none">Please enter a valid Egyptian phone number </p>
 
         <label for="emailAdressInput">Email Address</label>
         <input type="email" class="form-control mb-3" id="emailAdressInput" placeholder=" name@example.com" >
+                        <p class=" alertEmail text-danger  mb-0 d-none">Please enter a valid email address </p>
+
 
          <label for="locationAdressInput"> Address</label>
         <input type="email" class="form-control mb-3" id="locationAdressInput" placeholder=" Enter Adress" >
-        
+           <p class=" alertAdress text-danger  mb-0 d-none">Please enter a valid location address </p>
         <label for="groupInput">Group</label>
         <select class="form-select" id="groupInput" aria-label="Default select example">
   <option selected>select group</option>
