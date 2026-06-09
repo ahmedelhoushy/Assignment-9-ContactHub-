@@ -21,7 +21,12 @@ var alertName = document.querySelector('.alertName');
 var alertPhone = document.querySelector('.alertPhone');
 var alertEmail = document.querySelector('.alertEmail');
 var alertForm = document.querySelector('.alertForm');
-var inputList = document.querySelectorAll('.contact-form input');
+var inputList = [
+    fullNameInput,
+    phoneNumberInput,
+    emailAdressInput,
+    locationAdressInput
+];
 var contentList = [];
 
 if(localStorage.getItem('contentList') != null){
@@ -76,6 +81,7 @@ for(var i=0; i<inputList.length; i++){
 // 6- clear the input values
 clearform()
 
+modal.hide();
 
 } else {
     alertForm.classList.replace('d-none', 'd-block');
@@ -243,7 +249,9 @@ var content = {
         phoneNumber: phoneNumberInput.value,
         emailAdress: emailAdressInput.value,
         address: locationAdressInput.value,
-        img: `img/${photoInput.files[0]?.name}`,
+       img: photoInput.files[0]
+    ? `img/${photoInput.files[0].name}`
+    : contentList[updatedIndex].img,
         group: groupInput.value,
         notes: notesInput.value,
         photo: photoInput.value,
@@ -276,7 +284,7 @@ updateStatistics();
     modal.hide();
 } else{
     alertForm.classList.replace('d-none', 'd-block');
-}
+}}
 
 function resetModal(){
     clearform();
@@ -326,7 +334,7 @@ var regex={
     fullNameInput: /^[a-zA-Z ]{6,30}$/,
     phoneNumberInput: /^(010|011|012|015)[0-9]{8}$/,
     emailAdressInput: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    locationAdressInput: /^[a-zA-Z ]{10,30}$/,
+   locationAdressInput: /^[a-zA-Z0-9\s,.-]{5,50}$/
 }
 var alerts = {
     fullNameInput: document.querySelector('.alertName'),
